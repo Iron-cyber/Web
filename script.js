@@ -82,6 +82,17 @@ inp.addEventListener("input",function(){
     let newUser = users.filter((user)=>{
         return user.name.startsWith(inp.value);
     });
-    document.querySelector(".cards").innerHTML="";
+    const cardsContainer = document.querySelector(".cards");
+    cardsContainer.innerHTML = "";
+    if(newUser.length === 0) {
+    const msg = document.createElement("div");
+    msg.textContent = "User not found";
+    msg.style.color = "white";
+    msg.style.fontSize = "20px";
+    msg.style.marginTop = "20px";
+    cardsContainer.appendChild(msg);
+    return;
+  }
     showUsers(newUser);
+
 })
